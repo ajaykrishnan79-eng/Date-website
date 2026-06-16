@@ -8,7 +8,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{min-height:100vh;background:linear-gradient(135deg,#ff758c,#ff7eb3);display:flex;justify-content:center;align-items:center;padding:20px}
+body{
+background:linear-gradient(
+135deg,
+#1f2330,
+#4a2b45
+);
+}
 .container{width:100%;max-width:500px}
 .card{background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:24px;padding:24px;color:#fff;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,.2)}
 .hero{
@@ -20,11 +26,14 @@ object-fit:cover;
 }
 .buttons{position:relative;height:160px;margin-top:20px}
 button{border:none;border-radius:999px;padding:14px 24px;font-weight:600;cursor:pointer}
-#yesBtn{background:#fff;color:#ff4f87}
+#yesBtn{
+background:white;
+color:#5b3a70;
+}
 #noBtn{
 position:absolute;
 left:60%;
-background:#ff4f87;
+background:#5b3a70;
 color:#fff;
 transition:all .35s ease;
 }
@@ -114,20 +123,23 @@ confetti();
 };
 function moveButton(){
 
-
  let currentX=parseFloat(noBtn.style.left)||220;
  let currentY=parseFloat(noBtn.style.top)||80;
 
- let newX=currentX+(Math.random()*120-60);
- let newY=currentY+(Math.random()*80-40);
+ let newX=currentX+(Math.random()*240-120);
+ let newY=currentY+(Math.random()*180-90);
 
- newX=Math.max(20,Math.min(newX,300));
- newY=Math.max(20,Math.min(newY,220));
+ const card=document.getElementById("page1");
+
+ const maxX=card.offsetWidth-120;
+ const maxY=card.offsetHeight-80;
+
+ newX=Math.max(10,Math.min(newX,maxX));
+ newY=Math.max(10,Math.min(newY,maxY));
 
  noBtn.style.left=newX+"px";
  noBtn.style.top=newY+"px";
 }
-
 function pick(choice){
 sendMail("DATE OPTION SELECTED",choice);
 document.getElementById("page2").classList.add("hidden");
