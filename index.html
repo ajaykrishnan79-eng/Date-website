@@ -9,13 +9,22 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
 body{
+min-height:100vh;
 background:linear-gradient(
 135deg,
 #1f2330,
 #4a2b45
 );
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
 }
-.container{width:100%;max-width:500px}
+.container{
+width:100%;
+max-width:500px;
+margin:auto;
+}
 .card{background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:24px;padding:24px;color:#fff;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,.2)}
 .hero{
 width:100%;
