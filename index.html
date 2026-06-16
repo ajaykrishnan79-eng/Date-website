@@ -3,228 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Just One Question ❤️</title>
-
+<title>A Question For Aishwarya ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    min-height:100vh;
-    overflow:hidden;
-    background:linear-gradient(135deg,#ff758c,#ff7eb3);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.container{
-    text-align:center;
-    padding:20px;
-    width:100%;
-    max-width:500px;
-}
-
-.card{
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(12px);
-    border-radius:25px;
-    padding:30px 20px;
-    color:white;
-    box-shadow:0 10px 40px rgba(0,0,0,0.2);
-}
-
-.heart{
-    font-size:70px;
-    animation:beat 1s infinite;
-}
-
-@keyframes beat{
-    50%{
-        transform:scale(1.15);
-    }
-}
-
-h1{
-    margin-top:15px;
-    font-size:2rem;
-}
-
-p{
-    margin-top:15px;
-    line-height:1.6;
-}
-
-.buttons{
-    margin-top:35px;
-    position:relative;
-    height:120px;
-}
-
-button{
-    border:none;
-    border-radius:50px;
-    padding:14px 30px;
-    font-size:18px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-#yesBtn{
-    background:white;
-    color:#ff4f87;
-}
-
-#yesBtn:hover{
-    transform:scale(1.05);
-}
-
-#noBtn{
-    position:absolute;
-    background:#ff4f87;
-    color:white;
-    left:60%;
-}
-
-.success{
-    display:none;
-    animation:fadeIn 1s ease;
-}
-
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-.big-heart{
-    font-size:90px;
-}
-
-.confetti{
-    position:fixed;
-    width:10px;
-    height:10px;
-    top:-10px;
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-    to{
-        transform:translateY(110vh) rotate(720deg);
-    }
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{min-height:100vh;background:linear-gradient(135deg,#ff758c,#ff7eb3);display:flex;justify-content:center;align-items:center;overflow:hidden;padding:20px}
+.container{width:100%;max-width:450px}
+.card{background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:25px;padding:30px 20px;text-align:center;color:white;box-shadow:0 15px 35px rgba(0,0,0,.2);position:relative;overflow:hidden}
+.royals{font-size:50px;margin-bottom:15px;animation:floaty 3s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-8px)}}
+.heart{font-size:70px;animation:beat 1s infinite}
+@keyframes beat{50%{transform:scale(1.15)}}
+h1{margin-top:10px;font-size:2rem}
+p{margin-top:15px;line-height:1.6}
+.buttons{margin-top:35px;height:160px;position:relative}
+button{border:none;border-radius:50px;padding:14px 24px;font-size:16px;font-weight:600;cursor:pointer}
+#yesBtn{background:white;color:#ff4f87}
+#noBtn{position:absolute;left:60%;background:#ff4f87;color:white}
+.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}
+.option-grid button{background:white;color:#ff4f87;padding:14px}
+.hidden{display:none}
+.big-heart{font-size:90px;margin-bottom:10px}
+.confetti{position:fixed;width:10px;height:10px;top:-10px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.footer{margin-top:20px;font-size:13px;opacity:.8}
 </style>
 </head>
-
 <body>
-
 <div class="container">
-
-<div class="card" id="questionCard">
-
+<div class="card" id="page1">
+<div class="royals">🤴⚔️❤️👸</div>
 <div class="heart">❤️</div>
-
-<h1>Hey Beautiful ✨</h1>
-
-<p>
-I have something important to ask...
-</p>
-
-<p style="font-size:22px;font-weight:700;margin-top:20px;">
-Will you go on a date with me? 🥺
-</p>
-
+<h1>Hey Aishwarya ✨</h1>
+<p>There is one question I've been wanting to ask you...</p>
+<p style="font-size:22px;font-weight:700;">Will you go on a date with me? 🥺</p>
 <div class="buttons">
 <button id="yesBtn">YES ❤️</button>
 <button id="noBtn">NO 😅</button>
 </div>
-
+<div class="footer">Made with courage by your knight 🤴</div>
 </div>
 
-<div class="card success" id="successCard">
-
-<div class="big-heart">💖</div>
-
-<h1>YAYYYYY!! 🎉</h1>
-
-<p style="margin-top:20px;">
-You just made me the happiest person alive ❤️
-</p>
-
-<p style="margin-top:15px;">
-Now get ready for the best date ever 😎✨
-</p>
-
+<div class="card hidden" id="page2">
+<h1>YAYYYY ❤️</h1>
+<p>The princess has accepted the quest!</p>
+<p>Choose our royal adventure:</p>
+<div class="option-grid">
+<button onclick="finalAnswer('🍽 Lunch')">🍽 Lunch</button>
+<button onclick="finalAnswer('🌙 Dinner')">🌙 Dinner</button>
+<button onclick="finalAnswer('🥾 Hiking')">🥾 Hiking</button>
+<button onclick="finalAnswer('🎬 Movie')">🎬 Movie</button>
+<button onclick="finalAnswer('🕵️ Mystery Room')">🕵️ Mystery Room</button>
+<button onclick="finalAnswer('🎁 Surprise Me')">🎁 Surprise</button>
+</div>
 </div>
 
+<div class="card hidden" id="page3">
+<div class="big-heart">👑❤️👸</div>
+<h1>Excellent Choice!</h1>
+<p id="selectedOption"></p>
+<p style="margin-top:15px;">Looks like our fairy tale officially begins now ✨</p>
+<p style="margin-top:15px;">See you soon Princess Aishwarya ❤️</p>
+</div>
 </div>
 
 <script>
-
-const noBtn = document.getElementById("noBtn");
-
-function moveButton() {
-
-    const maxX = window.innerWidth - 120;
-    const maxY = window.innerHeight - 80;
-
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+const noBtn=document.getElementById('noBtn');
+function moveButton(){
+ const card=document.getElementById('page1');
+ const randomX=Math.random()*(card.offsetWidth-140);
+ const randomY=Math.random()*(card.offsetHeight-120);
+ noBtn.style.left=randomX+'px';
+ noBtn.style.top=randomY+'px';
 }
+noBtn.addEventListener('mouseenter',moveButton);
+noBtn.addEventListener('click',moveButton);
+noBtn.addEventListener('touchstart',moveButton);
 
-noBtn.addEventListener("click", moveButton);
-noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("touchstart", moveButton);
-
-document.getElementById("yesBtn").addEventListener("click", () => {
-
-    document.getElementById("questionCard").style.display = "none";
-    document.getElementById("successCard").style.display = "block";
-
-    createConfetti();
-
-    setTimeout(() => {
-
-        // Optional:
-        // window.location.href =
-        // "https://wa.me/919999999999?text=I%20said%20YES!";
-
-    }, 3000);
+document.getElementById('yesBtn').addEventListener('click',()=>{
+ document.getElementById('page1').classList.add('hidden');
+ document.getElementById('page2').classList.remove('hidden');
+ createConfetti();
 });
 
+function finalAnswer(choice){
+ document.getElementById('page2').classList.add('hidden');
+ document.getElementById('page3').classList.remove('hidden');
+ document.getElementById('selectedOption').innerHTML='You selected <b>'+choice+'</b> ❤️';
+ createConfetti();
+}
+
 function createConfetti(){
-
-    for(let i=0;i<120;i++){
-
-        const confetti = document.createElement("div");
-
-        confetti.classList.add("confetti");
-
-        confetti.style.left = Math.random()*100+"vw";
-        confetti.style.background =
-            `hsl(${Math.random()*360},100%,50%)`;
-
-        confetti.style.animationDuration =
-            (Math.random()*3+2)+"s";
-
-        document.body.appendChild(confetti);
-
-        setTimeout(()=>{
-            confetti.remove();
-        },5000);
-    }
+ for(let i=0;i<120;i++){
+  const c=document.createElement('div');
+  c.classList.add('confetti');
+  c.style.left=Math.random()*100+'vw';
+  c.style.background='hsl('+Math.random()*360+',100%,50%)';
+  c.style.animationDuration=(Math.random()*3+2)+'s';
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),5000);
+ }
 }
 </script>
-
 </body>
 </html>
