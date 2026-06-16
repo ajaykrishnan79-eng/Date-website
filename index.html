@@ -11,11 +11,23 @@
 body{min-height:100vh;background:linear-gradient(135deg,#ff758c,#ff7eb3);display:flex;justify-content:center;align-items:center;padding:20px}
 .container{width:100%;max-width:500px}
 .card{background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:24px;padding:24px;color:#fff;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,.2)}
-.hero{width:100%;border-radius:16px;margin-bottom:15px}
+.hero{
+width:100%;
+border-radius:16px;
+margin-bottom:15px;
+max-height:300px;
+object-fit:cover;
+}
 .buttons{position:relative;height:160px;margin-top:20px}
 button{border:none;border-radius:999px;padding:14px 24px;font-weight:600;cursor:pointer}
 #yesBtn{background:#fff;color:#ff4f87}
-#noBtn{position:absolute;left:60%;background:#ff4f87;color:#fff}
+#noBtn{
+position:absolute;
+left:60%;
+background:#ff4f87;
+color:#fff;
+transition:all .35s ease;
+}
 .hidden{display:none}
 .option-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
 .option-grid button{background:#fff;color:#ff4f87}
@@ -24,6 +36,9 @@ button{border:none;border-radius:999px;padding:14px 24px;font-weight:600;cursor:
 </style>
 </head>
 <body>
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 <div class="container">
 <div class="card" id="page1">
 <img src="knight-princess.jpg" class="hero">
@@ -50,10 +65,18 @@ button{border:none;border-radius:999px;padding:14px 24px;font-weight:600;cursor:
 </div>
 
 <div class="card hidden" id="page3">
-<h1>👑❤️👸</h1>
+<h1>
+🤴❤️👸
+</h1>
 <h2>Excellent Choice!</h2>
 <p id="choiceText"></p>
-<p style="margin-top:10px">See you soon Cutie ❤️</p>
+<p style="margin-top:10px">
+See you soon Cutie ❤️
+</p>
+
+<p style="margin-top:20px;font-size:14px">
+⚔️ The knight eagerly awaits his princess's reply ⚔️
+</p>
 </div>
 </div>
 
@@ -70,21 +93,40 @@ email:"ajaykrishnan79@gmail.com"
 }
 
 const noBtn=document.getElementById("noBtn");
-function moveButton(){
-const card=document.getElementById("page1");
-noBtn.style.left=(Math.random()*(card.offsetWidth-120))+"px";
-noBtn.style.top=(Math.random()*(card.offsetHeight-120))+"px";
-}
 noBtn.addEventListener("mouseenter",moveButton);
 noBtn.addEventListener("touchstart",moveButton);
 noBtn.addEventListener("click",moveButton);
+  document.getElementById("yesBtn").onclick=()=>{
 
-document.getElementById("yesBtn").onclick=()=>{
-sendMail("YES CLICKED","Waiting for option");
+document.getElementById("bgMusic").play();
+
+sendMail(
+"YES CLICKED",
+"Waiting for option"
+);
+
 document.getElementById("page1").classList.add("hidden");
+
 document.getElementById("page2").classList.remove("hidden");
+
 confetti();
+
 };
+function moveButton(){
+
+
+ let currentX=parseFloat(noBtn.style.left)||220;
+ let currentY=parseFloat(noBtn.style.top)||80;
+
+ let newX=currentX+(Math.random()*120-60);
+ let newY=currentY+(Math.random()*80-40);
+
+ newX=Math.max(20,Math.min(newX,300));
+ newY=Math.max(20,Math.min(newY,220));
+
+ noBtn.style.left=newX+"px";
+ noBtn.style.top=newY+"px";
+}
 
 function pick(choice){
 sendMail("DATE OPTION SELECTED",choice);
